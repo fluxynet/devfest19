@@ -14,7 +14,6 @@
 			const msgs = document.getElementById("msgs");
 
 			evtSource.onmessage = function(event) {
-				console.log({ event });
 				const msg = document.createElement("li");
 				msg.innerHTML = event.data;
 				msgs.appendChild(msg);

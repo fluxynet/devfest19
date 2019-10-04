@@ -10,6 +10,10 @@ const (
 	swansonURL = "http://ron-swanson-quotes.herokuapp.com/v2/quotes"
 )
 
+var (
+	stream = NewStreamer()
+)
+
 type nameResponse struct {
 	Name    string `json:"name"`
 	Surname string `json:"surname"`
@@ -26,7 +30,7 @@ func main() {
 	staticHandler := http.FileServer(http.Dir("public")) // serve files from disk
 	http.Handle("/", staticHandler)
 
-	go produce()
+	go stream.Start()
 
 	http.ListenAndServe(":8080", nil)
 }
