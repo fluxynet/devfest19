@@ -1,0 +1,21 @@
+GET http://localhost:8080/api/articles/
+
+###
+
+GET http://localhost:8080/api/articles/38391b19-7a33-41c6-9a34-5ac0077759ff
+
+###
+
+PUT http://localhost:8080/api/articles/38391b19-7a33-41c6-9a34-5ac0077759ff
+
+{"author": {"names": "Jules", "email": "jules@michael.mu"}}
+
+###
+
+DELETE http://localhost:8080/api/articles/b242ddc7-ac39-400f-b0a3-c0e09f51095a
+
+###
+
+POST http://localhost:8080/api/articles/
+
+{"content": "Lorem ipsum dolor sit amet", "title": "test", "id": "b242ddc7-ac39-400f-b0a3-c0e09f51095a"}

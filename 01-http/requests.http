@@ -1,0 +1,11 @@
+GET http://localhost:8080/get?name=DevFest&year=2019
+
+###
+
+POST http://localhost:8080/post
+
+{"name": "Pierre Fonds!"}
+
+###
+
+GET http://localhost:8080/template

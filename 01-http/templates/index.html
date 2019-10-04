@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>Planets</title>
+		<style>
+			body {
+				background-color: #000;
+			}
+			.container {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				height: 100vh;
+			}
+
+			.planet {
+				width: 1fr;
+			}
+
+			.planet img {
+				width: auto;
+				height: 150px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			{{ range.Planets }}
+			<div class="planet">
+				<figure>
+					<img src="{{.Photo}}" alt="{{.Name}}" />
+					<figcaption>
+						{{.Name}}
+					</figcaption>
+				</figure>
+			</div>
+			{{ end }}
+		</div>
+	</body>
+</html>
