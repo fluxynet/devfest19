@@ -1,12 +1,13 @@
 package main
 
 import (
+	"encoding/json"
 	"net/http"
 )
 
 const (
-	name    = "https://uinames.com/api/?language=en"
-	swanson = "http://ron-swanson-quotes.herokuapp.com/v2/quotes"
+	nameURL    = "https://uinames.com/api/?language=en"
+	swansonURL = "http://ron-swanson-quotes.herokuapp.com/v2/quotes"
 )
 
 type nameResponse struct {
@@ -19,7 +20,20 @@ type nameResponse struct {
 type swansonResponse []string
 
 func main() {
+	http.HandleFunc("/quotes.json", quotesHandler)
 
 	staticHandler := http.FileServer(http.Dir("public")) // serve files from disk
-	http.ListenAndServe(":8080", staticHandler)
+	http.Handle("/", staticHandler)
+	http.ListenAndServe(":8080", nil)
+}
+
+// quotesHandler serves quotes
+func quotesHandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(http.StatusOK)
+
+	encoder := json.NewEncoder(w)
+	msg := getMessage()
+
+	encoder.Encode(msg)
 }
