@@ -8,5 +8,17 @@
 	</head>
 	<body>
 		<h1>Hello World</h1>
+		<ul id="msgs"></ul>
+		<script>
+			const evtSource = new EventSource("/stream");
+			const msgs = document.getElementById("msgs");
+
+			evtSource.onmessage = function(event) {
+				console.log({ event });
+				const msg = document.createElement("li");
+				msg.innerHTML = event.data;
+				msgs.appendChild(msg);
+			};
+		</script>
 	</body>
 </html>

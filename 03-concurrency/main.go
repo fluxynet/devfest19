@@ -20,10 +20,14 @@ type nameResponse struct {
 type swansonResponse []string
 
 func main() {
-	http.HandleFunc("/quotes.json", quotesHandler)
+	http.HandleFunc("/quotes", quotesHandler)
+	http.HandleFunc("/stream", streamHandler)
 
 	staticHandler := http.FileServer(http.Dir("public")) // serve files from disk
 	http.Handle("/", staticHandler)
+
+	go produce()
+
 	http.ListenAndServe(":8080", nil)
 }
 
