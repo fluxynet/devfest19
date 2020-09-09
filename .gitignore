@@ -1,3 +1,3 @@
-01-http/01-http
-02-rest/02-rest
-03-concurrency/03-concurrency
+http-01-basics
+http-02-rest
+http-03-sse
